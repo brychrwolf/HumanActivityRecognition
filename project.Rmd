@@ -19,9 +19,6 @@ Class A corresponds to the specified execution of the exercise, while the other 
 Read more: (http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf)[http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf]
 
 ```{r}
-
-library(randomForest);
-
 train  <- read.csv("pml-training.csv", header=TRUE, na.strings = c("", " ","NA"))
 test  <- read.csv("pml-testing.csv", header=TRUE, na.strings = c("", " ","NA"))
 ```
@@ -52,6 +49,7 @@ Even though the provided data was already seperated for training and testing, th
 ### How you built your model?
 With that 60% training data, we then use a Random Forest approach for the classification model becuase of its well known robustness, accuracy, and typically low out-of-sample error.
 ```{r}
+library(caret); library(randomForest)
 inTrain <- createDataPartition(y=train$classe, p=.6, list=FALSE)
 myTrain <- train[inTrain,]
 myTest <- train[-inTrain,]
