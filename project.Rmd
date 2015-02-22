@@ -5,18 +5,34 @@ date: "Friday, February 20, 2015"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+##Inspiration
+Human activity recognition research has traditionally focused on discriminating between different activities, however, I propose an investigation into "how (well)" an activity was performed.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+##Question
+Can quantitaive characteristics be used to classify if an exercise was performed correctly?
 
-```{r}
-summary(cars)
-```
+##Input Data
+Six young health participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).
 
-You can also embed plots, for example:
+Class A corresponds to the specified execution of the exercise, while the other 4 classes correspond to common mistakes. Participants were supervised by an experienced weight lifter to make sure the execution complied to the manner they were supposed to simulate. The exercises were performed by six male participants aged between 20-28 years, with little weight lifting experience. We made sure that all participants could easily simulate the mistakes in a safe and controlled manner by using a relatively light dumbbell (1.25kg).
 
-```{r, echo=FALSE}
-plot(cars)
-```
+Read more: http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+##Features
+
+
+##Algorithm
+
+
+##Parameters
+
+
+##Evaluation
+
+* how you built your model, 
+* how you used cross validation, 
+* what you think the expected out of sample error is, 
+* and why you made the choices you did.
+
+Data credit go to:
+Velloso, E.; Bulling, A.; Gellersen, H.; Ugulino, W.; Fuks, H. Qualitative Activity Recognition of Weight Lifting Exercises. Proceedings of 4th International Conference in Cooperation with SIGCHI (Augmented Human '13) . Stuttgart, Germany: ACM SIGCHI, 2013.
