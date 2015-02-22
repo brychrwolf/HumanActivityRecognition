@@ -47,14 +47,26 @@ test <- test[, -which(names(test) %in% removeNAs)]
 Even though the provided data was already seperated for training and testing, the test size is only 20 which is inappropriate, so for further cross validation, we first slice the training data set into 60% for training, and 40% for model testing.
 
 ### How you built your model?
-With that 60% training data, we then use a Random Forest approach for the classification model becuase of its well known robustness, accuracy, and typically low out-of-sample error.
+**For reproducibility, first set the seed!** With that 60% training data, we then use a Random Forest approach for the classification model becuase of its well known robustness, accuracy, and typically low out-of-sample error.
 ```{r}
 library(caret); library(randomForest)
+set.seed(80085)
 inTrain <- createDataPartition(y=train$classe, p=.6, list=FALSE)
 myTrain <- train[inTrain,]
 myTest <- train[-inTrain,]
-rf <- randomForest(classe ~ ., data = myTrain) 
+
+Training <- 1:length(train$classe)
+Training[inTrain] <- TRUE
+Training[-inTrain] <- FALSE
+qplot(classe, 1:length(train$classe), data=train, color=Training, main="Classification Data for Training and Testing", xlab="Sample Classification", ylab="Data Index")
 ```
+
+```{r}
+rf <- randomForest(classe ~ ., data = myTrain)
+plot(rf, main ="Random Forest Error by number of Trees in model.")
+```
+
+As evident by the plot, optimum accuracy is achieved closer to 100 trees and not 500, so our model could be optimized be reducing nubmer of trees used.
 
 ##Evaluation
 To evalute our model, we predict the actual classes for each example of the provided test as well as for our 40% test data.
@@ -74,7 +86,7 @@ cm$overall
 ```
 
 ### What do you think is the expected out of sample error?
-this corresponds with the out-of-sample error to be 1%
+The above analysis corresponds with the out-of-sample error at 1%
 
 Credit for the WLE data goes to:
 (Groupware@LES ilustração, seta para a direita Projects ilustração, seta para a direita Human Activity Recognition)[http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises]
