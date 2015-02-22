@@ -70,7 +70,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h2>Input Data</h2>
 <p>Six young health participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).</p>
 <p>Class A corresponds to the specified execution of the exercise, while the other 4 classes correspond to common mistakes. Participants were supervised by an experienced weight lifter to make sure the execution complied to the manner they were supposed to simulate. The exercises were performed by six male participants aged between 20-28 years, with little weight lifting experience. We made sure that all participants could easily simulate the mistakes in a safe and controlled manner by using a relatively light dumbbell (1.25kg).</p>
-<p>Read more: (<a href="http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf">http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf</a>)[<a href="http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf">http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf</a>]</p>
+<p>Read more: <a href="http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf">http://groupware.les.inf.puc-rio.br/har#ixzz3SRC5ymYf</a></p>
 <pre class="r"><code>train  &lt;- read.csv(&quot;pml-training.csv&quot;, header=TRUE, na.strings = c(&quot;&quot;, &quot; &quot;,&quot;NA&quot;))
 test  &lt;- read.csv(&quot;pml-testing.csv&quot;, header=TRUE, na.strings = c(&quot;&quot;, &quot; &quot;,&quot;NA&quot;))</code></pre>
 </div>
@@ -78,7 +78,7 @@ test  &lt;- read.csv(&quot;pml-testing.csv&quot;, header=TRUE, na.strings = c(&q
 <h2>Features</h2>
 <p>For feature extraction we used a sliding window approach with different lengths from 0.5 second to 2.5 seconds, with 0.5 second overlap. In each step of the sliding window approach we calculated features on the Euler angles (roll, pitch and yaw), as well as the raw accelerometer, gyroscope and magnetometer readings. For the Euler angles of each of the four sensors we calculated eight features: mean, variance, standard deviation, max, min, amplitude, kurtosis and skewness, generating in total 96 derived feature sets.</p>
 <p>For training, we then took that WLE dataset and removed the first 7 columns because they are all identifiers and not sensor readings, which if included in the training, would either have no effect, or worse, may bias the model.</p>
-<p>Next Analysis of missing data was performed, and features missing data were removed before training the model. Credit for function, nacols, goes to (StackOverflow)[<a href="https://class.coursera.org/predmachlearn-011/forum/thread?thread_id=118">https://class.coursera.org/predmachlearn-011/forum/thread?thread_id=118</a>]. Removal of NAs was chosen for algorymthmic simplicity, however, imputing of missing data would be performed in the case that an accuracy of at least 95% was not achieved.</p>
+<p>Next Analysis of missing data was performed, and features missing data were removed before training the model. Credit for function, nacols, goes to <a href="https://class.coursera.org/predmachlearn-011/forum/thread?thread_id=118">https://class.coursera.org/predmachlearn-011/forum/thread?thread_id=118</a>. Removal of NAs was chosen for algorymthmic simplicity, however, imputing of missing data would be performed in the case that an accuracy of at least 95% was not achieved.</p>
 <pre class="r"><code>train &lt;- train[,8:length(train)]
 test &lt;- test[,8:length(test)]
 
@@ -145,7 +145,7 @@ cm$table</code></pre>
 <div id="what-do-you-think-is-the-expected-out-of-sample-error" class="section level3">
 <h3>What do you think is the expected out of sample error?</h3>
 <p>The above analysis corresponds with the out-of-sample error at 1%</p>
-<p>Credit for the WLE data goes to: (<a href="mailto:Groupware@LES">Groupware@LES</a> ilustração, seta para a direita Projects ilustração, seta para a direita Human Activity Recognition)[<a href="http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises">http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises</a>] Velloso, E.; Bulling, A.; Gellersen, H.; Ugulino, W.; Fuks, H. Qualitative Activity Recognition of Weight Lifting Exercises. Proceedings of 4th International Conference in Cooperation with SIGCHI (Augmented Human ’13) . Stuttgart, Germany: ACM SIGCHI, 2013.</p>
+<p>Credit for the WLE data goes to: <a href="http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises">http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises</a> Velloso, E.; Bulling, A.; Gellersen, H.; Ugulino, W.; Fuks, H. Qualitative Activity Recognition of Weight Lifting Exercises. Proceedings of 4th International Conference in Cooperation with SIGCHI (Augmented Human ’13) . Stuttgart, Germany: ACM SIGCHI, 2013.</p>
 </div>
 </div>
 
